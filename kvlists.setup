@@ -1,0 +1,8 @@
+(compile -s -O2 -d1 kvlists.scm -check-imports -emit-exports kvlists.exports)
+
+(install-extension
+  'kvlists
+  '("kvlists.so" "kvlists.html" "kvlists.exports")
+  '((version 1.0.0)
+    (documentation "kvlists.html")
+    (exports "kvlists.exports")))
