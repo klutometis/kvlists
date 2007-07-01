@@ -40,8 +40,7 @@
             kvlist-map
             kvlist-for-each
             kvlist-assoc
-            kvlist-cons
-            kvlist-copy
+            kvlist-cons*
             kvlist-delete
             kvlist-delete!
             kvlist->plist
@@ -90,23 +89,21 @@
                                         (symbol->keyword key))
                                     value)))))
 
-(define (kvlist-map fn kvlist)
+(define (kvlist-map proc kvlist)
   (map! (lambda (kv)
-          (fn (car kv) (cadr kv)))
+          (proc (car kv) (cadr kv)))
         (chop kvlist 2)))
 
-(define (kvlist-for-each fn kvlist)
+(define (kvlist-for-each proc kvlist)
   (for-each (lambda (kv)
-              (fn (car kv) (cadr kv)))
+              (proc (car kv) (cadr kv)))
             (chop kvlist 2)))
 
 (define (kvlist-assoc key kvlist)
   (cond ((memq key kvlist) => (lambda (kv*) (cons (car kv*) (cadr kv*))))
         (else #f)))
 
-(define kvlist-copy list-copy)
-
-(define (kvlist-cons key value kvlist)
+(define (kvlist-cons* key value kvlist)
   (cons* key value kvlist))
 
 (define (kvlist-delete key kvlist)
