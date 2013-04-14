@@ -33,6 +33,7 @@
    kvlist-key?
    kvlist-ref
    kvlist-set!
+   kvlist-fold
    kvlist-map
    kvlist-for-each
    kvlist-assoc
@@ -86,6 +87,11 @@
           (else (append! kvlist (list (if (keyword? key) key
                                           (symbol->keyword key))
                                       value)))))
+
+  (define (kvlists-fold cons nil kvlist)
+    (fold (lambda (kv a) (cons (car kv) (cadr kv) a))
+          nil
+          (chop kvlist 2)))
 
   (define (kvlist-map proc kvlist)
     (map! (lambda (kv)
