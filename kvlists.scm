@@ -88,7 +88,7 @@
                                           (symbol->keyword key))
                                       value)))))
 
-  (define (kvlists-fold cons nil kvlist)
+  (define (kvlist-fold cons nil kvlist)
     (fold (lambda (kv a) (cons (car kv) (cadr kv) a))
           nil
           (chop kvlist 2)))
