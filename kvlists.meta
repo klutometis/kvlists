@@ -5,4 +5,4 @@
  (category data)
  (license "MIT")
  (author "Arto Bendiken")
- (depends))
+ (depends setup-helper))
