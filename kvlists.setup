@@ -1,4 +1,4 @@
-(include "setup-helper")
+(use setup-helper-mod)
 
 (setup-shared-extension-module
  'kvlists
