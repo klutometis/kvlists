@@ -1,5 +1,5 @@
-(include "setup-helper")
+(use setup-helper-mod)
 
 (setup-shared-extension-module
  'kvlists
- '(version "1.0.5"))
+ '(version "1.0.6"))
